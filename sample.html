@@ -9,7 +9,7 @@ function main() {
   // lots more features are available, this is just a "hello world"
   // program.
   myPlot = new Fooplot(document.getElementById('myPlot'));
-  myPlot.addPlot('sin(x)',FOOPLOT_TYPE_FUNCTION);
+  myPlot.addPlot('sin(x)+0.5/x',FOOPLOT_TYPE_FUNCTION);
   myPlot.addPlot('theta',FOOPLOT_TYPE_POLAR,{'color':'#ff0000'});
   myPlot.reDraw();
 }
