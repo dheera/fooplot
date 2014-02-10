@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<title>Example FooPlot usage</title>
+<script type="text/javascript" src="fooplot.js"></script>
+<script type="text/javascript">
+
+function main() {
+  // lots more features are available, this is just a "hello world"
+  // program.
+  myPlot = new Fooplot(document.getElementById('myPlot'));
+  myPlot.addPlot('sin(x)',FOOPLOT_TYPE_FUNCTION);
+  myPlot.addPlot('theta',FOOPLOT_TYPE_POLAR,{'color':'#ff0000'});
+  myPlot.reDraw();
+}
+
+</script>
+</head>
+
+<body onload="main();">
+
+<div id="myPlot" style="width:650px;height:400px;"></div>
+
+</body>
+</html>
