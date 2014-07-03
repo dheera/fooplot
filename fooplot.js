@@ -54,8 +54,8 @@ function FooplotSVGRecorder() {
   }
   this.fillText=function(_text,_x,_y) {
     var _textAnchor='start';
-    if(this.textAlign=='center') _textAnchor='middle';
-    if(this.textAlign=='right') _textAnchor='end';
+    if(this.textAlign==='center') _textAnchor='middle';
+    if(this.textAlign==='right') _textAnchor='end';
     this.svgBody+='<text x="'+_x+'" y="'+_y+'" text-anchor="'+_textAnchor+'" style="font:'+this.font+';stroke:none;fill:'+this.fillStyle+'">'+_text+'</text>';
   }
   this.beginPath=function() {
@@ -177,7 +177,7 @@ function Fooplot(container,options) {
       newtool.onclick=action;
     } else {
       newtool.onclick=function() {
-        for (i in FOOPLOT_INSTANCES) if(this.parentNode==FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
+        for (i in FOOPLOT_INSTANCES) if(this.parentNode===FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
         _self.selectMode(this);
       }
       this.toolsMode.push({'tool':newtool,'id':modeId});
@@ -202,7 +202,7 @@ function Fooplot(container,options) {
     this.hideIntersection();
     this.hideTrace();
     for (i in this.toolsMode) {
-      if(this.toolsMode[i].tool==obj || this.toolsMode[i].id==obj) {
+      if(this.toolsMode[i].tool===obj || this.toolsMode[i].id===obj) {
         this.selectedMode=this.toolsMode[i].id;
         this.toolsMode[i].tool.style.opacity=0.7;
         this.toolsMode[i].tool.style.filter='alpha(opacity=70)';
@@ -260,7 +260,7 @@ function Fooplot(container,options) {
   this.toolZoomIn=this.addToolButton(
     'url(\'data:image/gif;base64,R0lGODlhIAAgAPZRAP9/AP+AAP+AAf+AAv+BA/+BBP+DB/+GDf+GDv+HD/+KFv+LGP+MGv+OHf+PH/+QIv+UKf+UKv+YMv+aNv+bN/+gQf+iRf+jSP+kSf+nUP+oUv+pU/+pVP+qVv+sWf+wYf+xY/+2bv+5c/+8ev+9fP+/gP/Bg//Chv/Eiv/Gjf/HkP/Jk//Ll//Mmf/Onv/Qof/Ysv/bt//cuf/cuv/du//evf/evv/gwf/gwv/hw//jx//kyv/mzf/nz//s2v/v3//v4P/w4f/w4v/x4//y5v/06v/27f/48f/59P/69v/79//7+P/8+f/8+v/9+//+/f/+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAFIALAAAAAAgACAAAAf+gFJSAAEAhoeIiYqJglKFi5CRhwGDkpaSj5eak5oGDJuaFio6SFFGMycQoIoJLlGvsK9IIpmgFECxua85CqsJQ7lAP0S5MKsvuUuGFLofmxi6ygDMuUe9ly3Ry7pRHpo8uk3buimXBk2vNQnrCYYG7AmlUTmXD7AytYpLr0OXAfIyDAg0YCjAQAPyYmjKoW0atxOaVDSklguDJgnoYkmjCAtIO00lko2LVQGUAXCxePTwoUvDqgY1uIVzCSpACHm5hoyQ16TDKgAOQLDYUaQGig7tMOyL0oTmT0hKX/V8GgkDT1VUF0UtkbUqCUX5uiIKKxaRo7KJKAkihLaQoEAAOw==\')',
     function() {
-      for (i in FOOPLOT_INSTANCES) if(this.parentNode==FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
+      for (i in FOOPLOT_INSTANCES) if(this.parentNode===FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
       _self.zoom(2);
     },
     null,
@@ -270,7 +270,7 @@ function Fooplot(container,options) {
   this.toolZoomOut=this.addToolButton(
     'url(\'data:image/gif;base64,R0lGODlhIAAgAPZLAP9/AP+AAP+AAf+AAv+BBP+DB/+GDf+GDv+HD/+KFv+LF/+LGP+MGv+OHf+PH/+QIv+UKf+UKv+YMv+bN/+gQf+iRf+jSP+kSf+nUP+oUv+pU/+pVP+qVv+rWP+sWf+wYf+xY/+zZ/+2bv+5c/+8ev+9fP+/gP/Bg//Chv/Eiv/Gjf/HkP/Jk//Ll//Mmf/Onv/Qof/Ysv/bt//cuv/evf/evv/gwf/gwv/hw//jx//kyv/mzf/v4P/w4f/w4v/x4//06v/27f/48f/59P/69v/79//7+P/8+v/9+//+/f/+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAEwALAAAAAAgACAAAAfXgExMAAEAhoeIiYqJgkyFi5CRhwGDkpaSj5eak5oFDJuaFSw5Q0tBMygQoIoIL0uvsK9DI5mgEzyxua84CqsIP7rBMaswwcYfmxfGxkILmi7Lxh2aO9HBKpcFR7khCt7exbE2lw+604gtuT+XAaWx54fpsTKaOda6KJoq97kXmhL8YPFAsKlEwCUUQBWoxi/DqgY1+B1xCCqACHfqSLg7wmEVgAcfWugAUiMFB4IXjLya6FFSypUdW0K6sFGVzEUvTdyMdKHEzlW1fipyJDQRJUFFDRUSFAgAOw==\')',
     function() {
-      for (i in FOOPLOT_INSTANCES) if(this.parentNode==FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
+      for (i in FOOPLOT_INSTANCES) if(this.parentNode===FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
       _self.zoom(0.5);
     },
     null,
@@ -489,9 +489,9 @@ function Fooplot(container,options) {
     if((this.ymax-this.ymin)/realygrid<this.height/6) {
       for(y=Math.floor(this.ymin/realygrid)*realygrid;y<=this.ymax;y+=realygrid) {
         py=(this.ymax-y)/(this.ymax-this.ymin)*this.height;
-        if(this.ygridunits==FOOPLOT_UNITS_PI) {
+        if(this.ygridunits===FOOPLOT_UNITS_PI) {
           printy=this.tryToMakeFraction(y/this.vars.pi)+'π';
-        } else if(this.ygridunits==FOOPLOT_UNITS_E) {
+        } else if(this.ygridunits===FOOPLOT_UNITS_E) {
           printy=this.tryToMakeFraction(y/this.vars.e)+'e';
         } else {
           printy=parseFloat(Math.round(y*ordery)/ordery);
@@ -509,9 +509,9 @@ function Fooplot(container,options) {
     if((this.xmax-this.xmin)/realxgrid<this.width/6) {
       for(x=Math.floor(this.xmin/realxgrid)*realxgrid;x<=this.xmax;x+=realxgrid) {
         px=(x-this.xmin)/(this.xmax-this.xmin)*this.width;
-        if(this.xgridunits==FOOPLOT_UNITS_PI) {
+        if(this.xgridunits===FOOPLOT_UNITS_PI) {
           printx=this.tryToMakeFraction(x/this.vars.pi)+'π';
-        } else if(this.xgridunits==FOOPLOT_UNITS_E) {
+        } else if(this.xgridunits===FOOPLOT_UNITS_E) {
           printx=this.tryToMakeFraction(x/this.vars.e)+'e';
         } else {
           printx=parseFloat(Math.round(x*orderx)/orderx);
@@ -595,10 +595,10 @@ function Fooplot(container,options) {
   this.dpy=0;
 
   this.container.onmousemove=function(e) {
-    if(e == null) e = window.event;
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    if(e === null) e = window.event;
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
-    if(e && (e.srcElement?e.srcElement:e.target).className=='fooplot-tool') return null;
+    if(e && (e.srcElement?e.srcElement:e.target).className==='fooplot-tool') return null;
     if(_self.zoomTimeout) return null;
     var offx=_self.container.offsetLeft;
     var offy=_self.container.offsetTop;
@@ -632,16 +632,16 @@ function Fooplot(container,options) {
   }
 
   this.container.onmouseover=function(e) {
-    if(e == null) e = window.event;
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    if(e === null) e = window.event;
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
     _self.toolcontainer.style.visibility='visible';
-    if(e && (e.srcElement?e.srcElement:e.target).className=='fooplot-tool') return null;
+    if(e && (e.srcElement?e.srcElement:e.target).className==='fooplot-tool') return null;
   }
 
   this.container.onmouseout=function(e) {
-    if(e == null) e = window.event;
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    if(e === null) e = window.event;
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
     _self.toolcontainer.style.visibility='hidden';
     if(e && (e.srcElement?e.srcElement:e.target).className=='fooplot-tool') return null;
@@ -649,8 +649,8 @@ function Fooplot(container,options) {
   }
 
   this.container.onmousedown=function(e) {
-    if(e == null) e = window.event;
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    if(e === null) e = window.event;
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
     if(e && (e.srcElement?e.srcElement:e.target).className=='fooplot-tool') return null;
     if(_self.zoomTimeout) return null;
@@ -677,9 +677,9 @@ function Fooplot(container,options) {
   }
 
   this.container.onmouseup=function(e) {
-    if(e == null) e = window.event;
+    if(e === null) e = window.event;
     if(e && e.preventDefault) e.preventDefault();
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     var offx=_self.container.offsetLeft;
     var offy=_self.container.offsetTop;
     if(_self.container.parentNode) {
@@ -740,7 +740,7 @@ function Fooplot(container,options) {
 
   this.container.ontouchmove=function(e) {
     e.preventDefault();
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length>=1) {
       var _touch=e.touches[0];
       _self.lastTouch=_touch;
@@ -752,7 +752,7 @@ function Fooplot(container,options) {
 
   this.container.ontouchstart=function(e) {
     e.preventDefault();
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length>=1) {
       var _touch=e.touches[0];
       _self.lastTouch=_touch;
@@ -764,7 +764,7 @@ function Fooplot(container,options) {
 
   this.container.ontouchend=function(e) {
     e.preventDefault();
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length==0) {
       this.mouseup(_self.lastTouch);
       _self.lastTouch=null;
@@ -772,8 +772,8 @@ function Fooplot(container,options) {
   }
 
   this.onmousewheel=function(e) {
-    if(e == null) e = window.event;
-    for (i in FOOPLOT_INSTANCES) if(this==FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
+    if(e === null) e = window.event;
+    for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
     else e.returnValue=false;
     if(e && (e.srcElement?e.srcElement:e.target).className=='fooplot-tool') return null;
@@ -914,8 +914,8 @@ function Fooplot(container,options) {
   this.findIntersection=function(jeq0,jeq1,initx) {
     var xpd,y0,y1,y,ypd,d=.0000000001;
     var i=0;
-    if(jeq0==null) return 0;
-    if(jeq1==null) { jeq1=function() { return 0; } }
+    if(jeq0===null) return 0;
+    if(jeq1===null) { jeq1=function() { return 0; } }
     this.vars.x=initx;
     y0=jeq0(this.vars);
     y1=jeq1(this.vars);
@@ -945,7 +945,7 @@ function Fooplot(container,options) {
     var i,y,minDistance=1e10,besti=null,besty=null;
     this.vars.x=initx;
     for(i in this.plots) {
-      if(this.plots[i]['type']==FOOPLOT_TYPE_FUNCTION) {
+      if(this.plots[i]['type']===FOOPLOT_TYPE_FUNCTION) {
         y=this.plots[i].jeq(this.vars);
         if(Math.abs(y-inity)<minDistance) { minDistance=Math.abs(y-inity);besti=i;besty=y; }
       }
@@ -968,9 +968,9 @@ function Fooplot(container,options) {
     this.plotstmp=this.plots.slice(0);
     this.plotstmp.unshift({'type':FOOPLOT_TYPE_FUNCTION,'jeq':function() {return 0;}});
     for(i in this.plotstmp) {
-      if(this.plotstmp[i]['type']==FOOPLOT_TYPE_FUNCTION) {
+      if(this.plotstmp[i]['type']===FOOPLOT_TYPE_FUNCTION) {
         for(j in this.plotstmp) {
-          if(i!=j && this.plotstmp[j]['type']==FOOPLOT_TYPE_FUNCTION) {
+          if(i!=j && this.plotstmp[j]['type']===FOOPLOT_TYPE_FUNCTION) {
             yi=this.plotstmp[i].jeq(this.vars);
             yj=this.plotstmp[j].jeq(this.vars);
             if(Math.abs(yi-yj)<minDistance) { minDistance=Math.abs(yi-yj);bestPair=[i,j]; }
@@ -1000,7 +1000,7 @@ function Fooplot(container,options) {
     // check if it is a nice fraction
     for(var denominator=1;denominator<16;denominator++) {
       numerator=(testnum*denominator).toFixed(9);
-      if(numerator.indexOf('.000000000')!=-1) return parseFloat(numerator)+(denominator==1?'':'/'+denominator);
+      if(numerator.indexOf('.000000000')!=-1) return parseFloat(numerator)+(denominator===1?'':'/'+denominator);
     }
     // return the decimal back if we fail to get a nice fraction
     return parseFloat(testnum.toFixed(9)).toString();
@@ -1010,16 +1010,16 @@ function Fooplot(container,options) {
 
   this.parseEquationError='';
 
-  this.parseEquationHasElement=function(v,e) {for(var i=0;i<v.length;i++) if(v[i]==e) return true;return false;}
+  this.parseEquationHasElement=function(v,e) {for(var i=0;i<v.length;i++) if(v[i]===e) return true;return false;}
 
   this.parseEquationFixPowers=function(v) {
-    if(v==null) { this.parseEquationError?null:this.parseEquationError="syntax error"; return null; }
+    if(v===null) { this.parseEquationError?null:this.parseEquationError="syntax error"; return null; }
     for(i=0;i<v.length;i++) {
-      if(this.parseEquationIsArray(v[i])) { v[i]=this.parseEquationFixPowers(v[i]); if(v[i]==null) { this.parseEquationError?null:this.parseEquationError="syntax error"; return null; } }
+      if(this.parseEquationIsArray(v[i])) { v[i]=this.parseEquationFixPowers(v[i]); if(v[i]===null) { this.parseEquationError?null:this.parseEquationError="syntax error"; return null; } }
     }
     for(var i=0;i<v.length;i++) {
-      if(v[i]=='^') {
-        if(v[i-1]==null||v[i+1]==null) { this.parseEquationError="^ requires two arguments, for example x^2 or (x+1)^(x+2)."; return null; }
+      if(v[i]==='^') {
+        if(v[i-1]===null||v[i+1]===null) { this.parseEquationError="^ requires two arguments, for example x^2 or (x+1)^(x+2)."; return null; }
         v.splice(i-1,3,new Array('Math.pow',new Array('(',v[i-1],',',v[i+1],')')));
         i-=2;
       }
@@ -1028,17 +1028,17 @@ function Fooplot(container,options) {
   }
 
   this.parseEquationFixFunctions=function(v) {
-    if(v==null) {this.parseEquationError?null:this.parseEquationError="syntax error"; return null;}
+    if(v===null) {this.parseEquationError?null:this.parseEquationError="syntax error"; return null;}
     for(i=0;i<v.length;i++) {
       if(this.parseEquationIsArray(v[i])) {
         v[i]=this.parseEquationFixFunctions(v[i]);
-        if(v[i]==null) {this.parseEquationError?null:this.parseEquationError="syntax error"; return null;}
+        if(v[i]===null) {this.parseEquationError?null:this.parseEquationError="syntax error"; return null;}
       }
     }
     for(var i=0;i<v.length;i++) {
       if(!this.parseEquationIsArray(v[i])) {
         if(FOOPLOT_MATH[v[i]]!=undefined) {
-          if(v[i+1]==null) {this.parseEquationEror="function "+v[i]+ " requires an argument."; return null;}
+          if(v[i+1]===null) {this.parseEquationEror="function "+v[i]+ " requires an argument."; return null;}
           v[i]='FOOPLOT_MATH.'+v[i].toLowerCase();
           v.splice(i,2,new Array('(',v[i],v[i+1],')'));
           i--;
@@ -1048,7 +1048,7 @@ function Fooplot(container,options) {
     return v;
   }
 
-  this.parseEquationIsArray=function(v) {if(v==null){return 0;}if(v.constructor.toString().indexOf("Array")==-1)return false;return true;}
+  this.parseEquationIsArray=function(v) {if(v==null){return 0;}if(v.constructor.toString().indexOf("Array")===-1)return false;return true;}
 
   this.parseEquationJoinArray=function(v) {var t="";for(var i=0;i<v.length;i++){if(this.parseEquationIsArray(v[i])){ t+=this.parseEquationJoinArray(v[i]);}else{t+=v[i];}}return t;}
 
@@ -1069,16 +1069,16 @@ function Fooplot(container,options) {
     for(i=0;i<tokens.length;i++) {
       tokens[i]=tokens[i].replace(/ /g,"");
       tokens[i]=tokens[i].replace(/_/g,".");
-      if(tokens[i]=='') { tokens.splice(i,1);i--; }
+      if(tokens[i]==='') { tokens.splice(i,1);i--; }
       else if(tokens[i].match(/^[a-z][a-z0-9]*$/i) && vars[tokens[i]]!=undefined) { tokens[i]='vars.'+tokens[i]; }
-      else if(tokens[i].length>0 && tokens[i].match(/^[a-z][a-z0-9]*$/i) && FOOPLOT_MATH[tokens[i]]==undefined) { this.parseEquationError="invalid variable or function: "+tokens[i];return null; }
+      else if(tokens[i].length>0 && tokens[i].match(/^[a-z][a-z0-9]*$/i) && FOOPLOT_MATH[tokens[i]]===undefined) { this.parseEquationError="invalid variable or function: "+tokens[i];return null; }
     }
     while(this.parseEquationHasElement(tokens,'(')||this.parseEquationHasElement(tokens,')')) {
       pstart=-1;
       for(i=0;i<tokens.length;i++) {
-        if(tokens[i]=='(') pstart=i;
-        if(tokens[i]==')'&&pstart==-1) { this.parseEquationError="unmatched right parenthesis )";return null; }
-        if(tokens[i]==')'&&pstart!=-1) {
+        if(tokens[i]==='(') pstart=i;
+        if(tokens[i]===')'&&pstart==-1) { this.parseEquationError="unmatched right parenthesis )";return null; }
+        if(tokens[i]===')'&&pstart!=-1) {
           tokens.splice(pstart,i-pstart+1,tokens.slice(pstart,i+1));
           i=-1;
           pstart=-1;
@@ -1087,9 +1087,9 @@ function Fooplot(container,options) {
       if(pstart!=-1) { this.parseEquationError="unmatched left parenthesis (";return null; }
     }
     tokens=this.parseEquationFixFunctions(tokens);
-    if(tokens==null) { return null; }
+    if(tokens===null) { return null; }
     tokens=this.parseEquationFixPowers(tokens);
-    if(tokens==null) { return null; }
+    if(tokens===null) { return null; }
     eval('jeq=function(vars) { return '+this.parseEquationJoinArray(tokens)+'; }');
     return jeq;
   }
@@ -1187,7 +1187,7 @@ function Fooplot(container,options) {
         this.plots.push({'id':this.plotlastid++,'type':type,'eq':eq,'jeqx':jeqx,'jeqy':jeqy,'options':options});
       break;
       case FOOPLOT_TYPE_POINTS:
-        if(eq.length==null) return null;
+        if(eq.length===null) return null;
         this.plots.push({'id':this.plotlastid++,'type':type,'eq':eq,'options':options});
       break;
       default:
@@ -1368,11 +1368,11 @@ var FOOPLOT_TRANSITIONS=function() {
   var b = document.body||document.documentElement;
   var s = b.style;
   var p = 'transition';
-  if(typeof s[p] == 'string') {return true; }
+  if(typeof s[p] === 'string') {return true; }
   v = ['Moz', 'Webkit', 'Khtml', 'O', 'ms'],
   p = p.charAt(0).toUpperCase() + p.substr(1);
   for(var i=0; i<v.length; i++) {
-    if(typeof s[v[i] + p] == 'string') { return true; }
+    if(typeof s[v[i] + p] === 'string') { return true; }
   }
   return false;
 }();
