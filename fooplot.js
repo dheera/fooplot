@@ -159,7 +159,7 @@ function Fooplot(container,options) {
   }
 
   this.addToolButton=function(image,action,modeId,tooltip) {
-    var newtool=document.createElement('button');
+    var newtool=document.createElement('button'),i;
     newtool.className='fooplot-tool';
     newtool.style.width='32px';
     if(tooltip) newtool.title=tooltip;
@@ -199,6 +199,7 @@ function Fooplot(container,options) {
   this.toolsMode=[];
   this.selectedMode=FOOPLOT_MODE_MOVE;
   this.selectMode=function(obj) {
+    var i;
     this.hideIntersection();
     this.hideTrace();
     for (i in this.toolsMode) {
@@ -234,6 +235,7 @@ function Fooplot(container,options) {
       this.zoomSelf=this;
       this.zoomPendingFactor*=factor;
       this.zoomTimeout=window.setTimeout(function(_self) {
+        var i;
         if(!_self) for (i in FOOPLOT_INSTANCES) if(FOOPLOT_INSTANCES[i].zoomSelf) var _self=FOOPLOT_INSTANCES[i].zoomSelf;
         var centerx=(_self.xmax+_self.xmin)/2;
         var centery=(_self.ymax+_self.ymin)/2;
@@ -258,6 +260,7 @@ function Fooplot(container,options) {
   }
 
   this.toolZoomIn=this.addToolButton(
+    var i;
     'url(\'data:image/gif;base64,R0lGODlhIAAgAPZRAP9/AP+AAP+AAf+AAv+BA/+BBP+DB/+GDf+GDv+HD/+KFv+LGP+MGv+OHf+PH/+QIv+UKf+UKv+YMv+aNv+bN/+gQf+iRf+jSP+kSf+nUP+oUv+pU/+pVP+qVv+sWf+wYf+xY/+2bv+5c/+8ev+9fP+/gP/Bg//Chv/Eiv/Gjf/HkP/Jk//Ll//Mmf/Onv/Qof/Ysv/bt//cuf/cuv/du//evf/evv/gwf/gwv/hw//jx//kyv/mzf/nz//s2v/v3//v4P/w4f/w4v/x4//y5v/06v/27f/48f/59P/69v/79//7+P/8+f/8+v/9+//+/f/+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAFIALAAAAAAgACAAAAf+gFJSAAEAhoeIiYqJglKFi5CRhwGDkpaSj5eak5oGDJuaFio6SFFGMycQoIoJLlGvsK9IIpmgFECxua85CqsJQ7lAP0S5MKsvuUuGFLofmxi6ygDMuUe9ly3Ry7pRHpo8uk3buimXBk2vNQnrCYYG7AmlUTmXD7AytYpLr0OXAfIyDAg0YCjAQAPyYmjKoW0atxOaVDSklguDJgnoYkmjCAtIO00lko2LVQGUAXCxePTwoUvDqgY1uIVzCSpACHm5hoyQ16TDKgAOQLDYUaQGig7tMOyL0oTmT0hKX/V8GgkDT1VUF0UtkbUqCUX5uiIKKxaRo7KJKAkihLaQoEAAOw==\')',
     function() {
       for (i in FOOPLOT_INSTANCES) if(this.parentNode===FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
@@ -270,6 +273,7 @@ function Fooplot(container,options) {
   this.toolZoomOut=this.addToolButton(
     'url(\'data:image/gif;base64,R0lGODlhIAAgAPZLAP9/AP+AAP+AAf+AAv+BBP+DB/+GDf+GDv+HD/+KFv+LF/+LGP+MGv+OHf+PH/+QIv+UKf+UKv+YMv+bN/+gQf+iRf+jSP+kSf+nUP+oUv+pU/+pVP+qVv+rWP+sWf+wYf+xY/+zZ/+2bv+5c/+8ev+9fP+/gP/Bg//Chv/Eiv/Gjf/HkP/Jk//Ll//Mmf/Onv/Qof/Ysv/bt//cuv/evf/evv/gwf/gwv/hw//jx//kyv/mzf/v4P/w4f/w4v/x4//06v/27f/48f/59P/69v/79//7+P/8+v/9+//+/f/+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAEwALAAAAAAgACAAAAfXgExMAAEAhoeIiYqJgkyFi5CRhwGDkpaSj5eak5oFDJuaFSw5Q0tBMygQoIoIL0uvsK9DI5mgEzyxua84CqsIP7rBMaswwcYfmxfGxkILmi7Lxh2aO9HBKpcFR7khCt7exbE2lw+604gtuT+XAaWx54fpsTKaOda6KJoq97kXmhL8YPFAsKlEwCUUQBWoxi/DqgY1+B1xCCqACHfqSLg7wmEVgAcfWugAUiMFB4IXjLya6FFSypUdW0K6sFGVzEUvTdyMdKHEzlW1fipyJDQRJUFFDRUSFAgAOw==\')',
     function() {
+      var i;
       for (i in FOOPLOT_INSTANCES) if(this.parentNode===FOOPLOT_INSTANCES[i].toolcontainer) var _self=FOOPLOT_INSTANCES[i];
       _self.zoom(0.5);
     },
@@ -424,6 +428,7 @@ function Fooplot(container,options) {
   this.context=this.canvas.getContext("2d");
 
   this.getRealGrid=function() {
+    var orderfull, order, rem, realxgrid, realygrid;
     if(parseFloat(this.xgrid)) {
       realxgrid=this.xgrid;
     } else {
@@ -471,7 +476,7 @@ function Fooplot(container,options) {
   }
 
   this.drawLabels=function() {
-    var px,py,x,y,realxgrid,realygrid;
+    var px,py,x,y,realxgrid,realygrid,g,printy,printx;
     g=this.getRealGrid();
     realxgrid=g[0];
     realygrid=g[1];
@@ -521,7 +526,7 @@ function Fooplot(container,options) {
     }
   }
   this.drawAxes=function() {
-    var px,py,x,y,realxgrid,realygrid;
+    var px,py,x,y,realxgrid,realygrid,g;
     g=this.getRealGrid();
     realxgrid=g[0];
     realygrid=g[1];
@@ -595,6 +600,7 @@ function Fooplot(container,options) {
   this.dpy=0;
 
   this.container.onmousemove=function(e) {
+    var i;
     if(e === null) e = window.event;
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
@@ -623,7 +629,7 @@ function Fooplot(container,options) {
         case FOOPLOT_MODE_TRACE:
         var initx=mx/_self.width*(_self.xmax-_self.xmin)+_self.xmin;
         var order=Math.pow(10,2-Math.floor(Math.log(_self.xmax-_self.xmin)/Math.log(10)));
-        var initx=parseFloat(Math.floor(initx*order)/order);
+        initx=parseFloat(Math.floor(initx*order)/order);
         var inity=(1-my/_self.height)*(_self.ymax-_self.ymin)+_self.ymin;
         _self.showTrace(initx,inity);
         break;
@@ -632,6 +638,7 @@ function Fooplot(container,options) {
   }
 
   this.container.onmouseover=function(e) {
+    var i;
     if(e === null) e = window.event;
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
@@ -640,6 +647,7 @@ function Fooplot(container,options) {
   }
 
   this.container.onmouseout=function(e) {
+    var i;
     if(e === null) e = window.event;
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
@@ -649,6 +657,7 @@ function Fooplot(container,options) {
   }
 
   this.container.onmousedown=function(e) {
+    var i;
     if(e === null) e = window.event;
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
@@ -677,6 +686,7 @@ function Fooplot(container,options) {
   }
 
   this.container.onmouseup=function(e) {
+    var i;
     if(e === null) e = window.event;
     if(e && e.preventDefault) e.preventDefault();
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
@@ -739,6 +749,7 @@ function Fooplot(container,options) {
   this.lastTouch=null;
 
   this.container.ontouchmove=function(e) {
+    var i;
     e.preventDefault();
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length>=1) {
@@ -751,6 +762,7 @@ function Fooplot(container,options) {
   }
 
   this.container.ontouchstart=function(e) {
+    var i;
     e.preventDefault();
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length>=1) {
@@ -763,6 +775,7 @@ function Fooplot(container,options) {
   }
 
   this.container.ontouchend=function(e) {
+    var i;
     e.preventDefault();
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e.touches.length==0) {
@@ -772,6 +785,7 @@ function Fooplot(container,options) {
   }
 
   this.onmousewheel=function(e) {
+    var i;
     if(e === null) e = window.event;
     for (i in FOOPLOT_INSTANCES) if(this===FOOPLOT_INSTANCES[i].container) var _self=FOOPLOT_INSTANCES[i];
     if(e && e.preventDefault) e.preventDefault();
@@ -795,6 +809,7 @@ function Fooplot(container,options) {
   }
 
   this.drawPoints=function(points) {
+    var i;
     if(points.length) {
       for(i in points) {
         if(points[i].length==2) {
@@ -998,7 +1013,7 @@ function Fooplot(container,options) {
   this.tryToMakeFraction=function(testnum) {
     var numerator,denominator;
     // check if it is a nice fraction
-    for(var denominator=1;denominator<16;denominator++) {
+    for(denominator=1;denominator<16;denominator++) {
       numerator=(testnum*denominator).toFixed(9);
       if(numerator.indexOf('.000000000')!=-1) return parseFloat(numerator)+(denominator===1?'':'/'+denominator);
     }
@@ -1326,7 +1341,7 @@ var FOOPLOT_INSTANCES=[];
 
 // extended math functions
 
-FOOPLOT_MATH={};
+var FOOPLOT_MATH={};
 FOOPLOT_MATH.sin=Math.sin;
 FOOPLOT_MATH.cos=Math.cos;
 FOOPLOT_MATH.tan=Math.tan;
@@ -1376,4 +1391,3 @@ var FOOPLOT_TRANSITIONS=function() {
   }
   return false;
 }();
-
