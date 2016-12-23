@@ -1090,9 +1090,18 @@ function Fooplot(container,options) {
     if(tokens===null) { return null; }
     tokens=this.parseEquationFixPowers(tokens);
     if(tokens===null) { return null; }
-    eval('jeq=function(vars) { return '+this.parseEquationJoinArray(tokens)+'; }');
-    return jeq;
-  }
+
+    var check_equation;
+    try {
+      check_equation = this.parseEquationJoinArray(tokens);
+      eval('jeq=function(vars) { return '+this.parseEquationJoinArray(tokens)+'; }');
+      return jeq;
+    }
+    catch(e) {
+      console.log('Equation has problems: '+tokens)
+      return null;
+    }
+}
 
   this.parseConst=function(eq) {
     var consts={'pi':this.vars.pi,'e':this.vars.e};
